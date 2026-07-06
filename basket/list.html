@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>장바구니 - 카페</title>
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="list.css" />
+</head>
+<body>
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">☕ 카페</a>
+      <nav class="header-nav">
+        <a href="../basket/list.html" class="cart-link">
+          🛒 장바구니
+          <span id="cart-count" class="cart-badge">0</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">장바구니</h1>
+
+    <div id="basket-list" class="basket-list"></div>
+
+    <div id="basket-summary" class="basket-summary card"></div>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="list.js"></script>
+</body>
+</html>
