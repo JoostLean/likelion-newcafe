@@ -1,0 +1,20 @@
+/* ============================================
+   관리자 · 메뉴 수정
+   (폼 레이아웃/헤더 스타일은 create.css를 공유하고,
+    이 파일에는 수정 화면 고유 스타일만 정의)
+   ============================================ */
+
+.detail-missing {
+  text-align: center;
+  padding: var(--space-xl);
+  color: var(--color-text-muted);
+}
+
+/* 삭제 버튼을 왼쪽으로 밀어 저장/취소와 시각적으로 분리 */
+.menu-form__actions {
+  justify-content: space-between;
+}
+
+.menu-form__actions #delete-btn {
+  margin-right: auto;
+}

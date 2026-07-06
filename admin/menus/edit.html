@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메뉴 수정 · 관리자</title>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <!-- 폼 스타일은 create.css를 공유 -->
+    <link rel="stylesheet" href="create.css" />
+    <link rel="stylesheet" href="edit.css" />
+  </head>
+  <body>
+    <header class="admin-header glass">
+      <div class="container admin-header__inner">
+        <div class="admin-header__brand">
+          <span class="admin-header__logo">🔴 관리자</span>
+          <span class="admin-header__page">메뉴 수정</span>
+        </div>
+        <nav class="admin-header__nav">
+          <a href="../index.html" class="admin-header__link">대시보드</a>
+          <a href="list.html" class="admin-header__link is-active">메뉴</a>
+          <a href="../orders/list.html" class="admin-header__link">주문</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container admin-main">
+      <a href="list.html" class="back-link">← 목록으로</a>
+
+      <div class="form-layout" id="form-layout">
+        <form class="menu-form card" id="menu-form" novalidate>
+          <h1 class="menu-form__title">메뉴 수정</h1>
+
+          <div class="field">
+            <label class="field__label" for="name">메뉴 이름 *</label>
+            <input class="field__input" type="text" id="name" name="name"
+                   placeholder="예: 아메리카노" required />
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label class="field__label" for="category">카테고리 *</label>
+              <select class="field__input" id="category" name="category" required></select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="price">가격(원) *</label>
+              <input class="field__input" type="number" id="price" name="price"
+                     min="0" step="100" placeholder="4000" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="image">이미지 URL</label>
+            <input class="field__input" type="url" id="image" name="image"
+                   placeholder="https://..." />
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="description">설명</label>
+            <textarea class="field__input" id="description" name="description"
+                      rows="4" placeholder="메뉴 설명을 입력하세요."></textarea>
+          </div>
+
+          <div class="field-check">
+            <label class="check">
+              <input type="checkbox" id="popular" name="popular" />
+              <span>인기 메뉴로 지정</span>
+            </label>
+            <label class="check">
+              <input type="checkbox" id="soldOut" name="soldOut" />
+              <span>품절 처리</span>
+            </label>
+          </div>
+
+          <div class="menu-form__actions">
+            <button type="button" class="btn btn-danger" id="delete-btn">삭제</button>
+            <a href="list.html" class="btn btn-ghost">취소</a>
+            <button type="submit" class="btn btn-primary">변경 저장</button>
+          </div>
+        </form>
+
+        <aside class="preview card" id="preview">
+          <p class="preview__label">미리보기</p>
+          <div class="preview__thumb">
+            <img id="preview-img" src="https://placehold.co/400x300?text=No+Image" alt="" />
+          </div>
+          <div class="preview__body">
+            <span class="preview__category" id="preview-category">카테고리</span>
+            <h2 class="preview__name" id="preview-name">메뉴 이름</h2>
+            <span class="preview__price" id="preview-price">0원</span>
+          </div>
+        </aside>
+      </div>
+
+      <div class="detail-missing card" id="missing" hidden>
+        <p>존재하지 않는 메뉴입니다.</p>
+        <a href="list.html" class="btn btn-primary" style="margin-top:16px">목록으로</a>
+      </div>
+    </main>
+
+    <script src="../../js/data.js"></script>
+    <script src="../../js/utils.js"></script>
+    <script src="edit.js"></script>
+  </body>
+</html>
