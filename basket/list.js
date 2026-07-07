@@ -1,5 +1,5 @@
 /* ============================================
-   장바구니 페이지 로직 (조회 전용)
+   장바구니 페이지 로직
    ============================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,9 +31,15 @@ function renderBasket() {
         <div class="basket-item-image" style="background-image:url('${i.menu.image}')"></div>
         <div class="basket-item-body">
           <h3 class="basket-item-name">${escapeHtml(i.menu.name)}</h3>
-          <p class="basket-item-price text-muted">${formatPrice(i.menu.price)} × ${i.qty}</p>
+          <p class="basket-item-price text-muted">${formatPrice(i.menu.price)}</p>
+          <div class="basket-item-qty">
+            <button class="qty-btn" data-decrease="${i.menuId}" aria-label="수량 감소">−</button>
+            <span class="qty-value">${i.qty}</span>
+            <button class="qty-btn" data-increase="${i.menuId}" aria-label="수량 증가">+</button>
+          </div>
         </div>
         <p class="basket-item-subtotal">${formatPrice(i.subtotal)}</p>
+        <button class="basket-item-remove" data-remove="${i.menuId}" aria-label="삭제">✕</button>
       </article>`
     )
     .join("");
@@ -47,4 +53,28 @@ function renderBasket() {
       <span>총 금액</span>
       <span>${formatPrice(Cart.getTotal())}</span>
     </div>`;
+
+  $$("[data-increase]", list).forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = items.find((i) => i.menuId === Number(btn.dataset.increase));
+      Cart.setQty(btn.dataset.increase, item.qty + 1);
+      renderBasket();
+    });
+  });
+
+  $$("[data-decrease]", list).forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = items.find((i) => i.menuId === Number(btn.dataset.decrease));
+      Cart.setQty(btn.dataset.decrease, item.qty - 1);
+      renderBasket();
+    });
+  });
+
+  $$("[data-remove]", list).forEach((btn) => {
+    btn.addEventListener("click", () => {
+      Cart.remove(btn.dataset.remove);
+      renderBasket();
+      showToast("장바구니에서 제거했습니다.");
+    });
+  });
 }
