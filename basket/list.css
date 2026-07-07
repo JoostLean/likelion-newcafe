@@ -96,10 +96,53 @@
   font-size: var(--font-size-sm);
 }
 
+.basket-item-qty {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: 4px;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.qty-btn:hover {
+  background: var(--color-cream-300);
+}
+
+.qty-value {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
 .basket-item-subtotal {
   flex: none;
   font-weight: 700;
   color: var(--color-primary);
+}
+
+.basket-item-remove {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  color: var(--color-text-muted);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.basket-item-remove:hover {
+  background: var(--color-cream-300);
+  color: var(--color-danger);
 }
 
 .basket-summary {
