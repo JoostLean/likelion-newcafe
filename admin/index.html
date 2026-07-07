@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>대시보드 · 관리자</title>
+    <link rel="stylesheet" href="../css/variables.css" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header class="admin-header glass">
+      <div class="container admin-header__inner">
+        <div class="admin-header__brand">
+          <span class="admin-header__logo">🔴 관리자</span>
+          <span class="admin-header__page">대시보드</span>
+        </div>
+        <nav class="admin-header__nav">
+          <a href="index.html" class="admin-header__link is-active">대시보드</a>
+          <a href="menus/list.html" class="admin-header__link">메뉴</a>
+          <a href="orders/list.html" class="admin-header__link">주문</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container admin-main">
+      <h1 class="dashboard-title">대시보드</h1>
+
+      <div class="stats-grid">
+        <div class="stat-card card">
+          <span class="stat-card__label">오늘 주문</span>
+          <span class="stat-card__value" id="stat-today-orders">0</span>
+        </div>
+        <div class="stat-card card">
+          <span class="stat-card__label">대기중 주문</span>
+          <span class="stat-card__value" id="stat-pending-orders">0</span>
+        </div>
+        <div class="stat-card card">
+          <span class="stat-card__label">총 매출</span>
+          <span class="stat-card__value" id="stat-total-sales">0원</span>
+        </div>
+        <div class="stat-card card">
+          <span class="stat-card__label">등록 메뉴</span>
+          <span class="stat-card__value" id="stat-menu-count">0</span>
+        </div>
+      </div>
+
+      <section class="dashboard-section">
+        <h2 class="dashboard-section__title">최근 주문</h2>
+        <div id="recent-orders" class="recent-orders"></div>
+      </section>
+    </main>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
