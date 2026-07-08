@@ -141,3 +141,37 @@
   gap: var(--space-md);
   align-items: center;
 }
+
+/* ---------- 푸터 ---------- */
+
+.site-footer {
+  margin-top: var(--space-xl);
+  background: var(--color-brown-900);
+  color: var(--color-cream-300);
+}
+
+.footer-inner {
+  padding-block: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.footer-logo {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-text-inverse);
+  margin-bottom: var(--space-xs);
+}
+
+.footer-info {
+  font-size: var(--font-size-sm);
+}
+
+.footer-copyright {
+  margin-top: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-brown-400);
+}
