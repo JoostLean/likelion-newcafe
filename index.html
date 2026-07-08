@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>카페</title>
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">☕ 카페</a>
+      <nav class="header-nav">
+        <a href="my/index.html" class="my-link">마이페이지</a>
+        <a href="basket/list.html" class="cart-link">
+          🛒 장바구니
+          <span id="cart-count" class="cart-badge">0</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="hero-eyebrow">Warm &amp; Cozy</p>
+        <h1 class="hero-title">향긋한 한 잔의 여유,<br />카페에서 만나요</h1>
+        <p class="hero-desc">직접 로스팅한 원두와 정성스러운 디저트를 만나보세요.</p>
+        <a href="menus/list.html" class="btn btn-primary hero-cta">메뉴 보러가기</a>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="section-head">
+        <h2 class="section-title">카테고리</h2>
+      </div>
+      <div id="category-grid" class="category-grid"></div>
+    </section>
+
+    <section class="container section">
+      <div class="section-head">
+        <h2 class="section-title">인기 메뉴</h2>
+        <a href="menus/list.html" class="section-more">전체보기 →</a>
+      </div>
+      <div id="popular-grid" class="popular-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="text-muted">☕ 카페 · 오늘도 좋은 하루 되세요</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

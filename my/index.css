@@ -1,0 +1,211 @@
+/* ============================================
+   마이페이지
+   ============================================ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+}
+
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.my-link {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.my-link:hover {
+  color: var(--color-primary);
+}
+
+.cart-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.cart-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-danger);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.page-title {
+  margin: var(--space-lg) 0 var(--space-lg);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+}
+
+/* ---- 요약 ---- */
+.my-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.my-summary-card {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.my-summary-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.my-summary-value {
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+/* ---- 바로가기 ---- */
+.my-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.my-link-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+  color: inherit;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.my-link-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.my-link-card-icon {
+  font-size: 1.75rem;
+}
+
+.my-link-card-label {
+  font-weight: 700;
+}
+
+/* ---- 최근 주문 ---- */
+.my-recent-section {
+  padding-bottom: var(--space-xl);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.section-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.section-more {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.section-more:hover {
+  color: var(--color-primary-hover);
+}
+
+.my-recent-orders {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.my-order-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: inherit;
+  transition: box-shadow var(--transition), transform var(--transition);
+  flex-wrap: wrap;
+}
+
+.my-order-row:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.my-order-row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.my-order-row-id {
+  font-weight: 700;
+}
+
+.my-order-row-summary {
+  font-size: var(--font-size-sm);
+}
+
+.order-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  color: #fff;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.my-order-row-total {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--space-xl) 0;
+}

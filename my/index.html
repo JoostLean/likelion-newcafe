@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마이페이지 - 카페</title>
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">☕ 카페</a>
+      <nav class="header-nav">
+        <a href="index.html" class="my-link">마이페이지</a>
+        <a href="../basket/list.html" class="cart-link">
+          🛒 장바구니
+          <span id="cart-count" class="cart-badge">0</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">마이페이지</h1>
+
+    <div class="my-summary">
+      <div class="my-summary-card card">
+        <span class="my-summary-label">총 주문</span>
+        <span class="my-summary-value" id="my-order-count">0건</span>
+      </div>
+      <div class="my-summary-card card">
+        <span class="my-summary-label">누적 결제금액</span>
+        <span class="my-summary-value" id="my-total-spent">0원</span>
+      </div>
+    </div>
+
+    <div class="my-links">
+      <a href="../orders/list.html" class="my-link-card card">
+        <span class="my-link-card-icon">🧾</span>
+        <span class="my-link-card-label">주문내역</span>
+      </a>
+      <a href="../basket/list.html" class="my-link-card card">
+        <span class="my-link-card-icon">🛒</span>
+        <span class="my-link-card-label">장바구니</span>
+      </a>
+      <a href="../menus/list.html" class="my-link-card card">
+        <span class="my-link-card-icon">☕</span>
+        <span class="my-link-card-label">메뉴 보기</span>
+      </a>
+    </div>
+
+    <section class="my-recent-section">
+      <div class="section-head">
+        <h2 class="section-title">최근 주문</h2>
+        <a href="../orders/list.html" class="section-more">전체보기 →</a>
+      </div>
+      <div id="my-recent-orders" class="my-recent-orders"></div>
+    </section>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
