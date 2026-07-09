@@ -43,7 +43,7 @@ function renderRecentOrders() {
     .map((order) => {
       const status = ORDER_STATUS[order.status] || ORDER_STATUS.pending;
       return `
-      <a href="orders/detail.html?id=${order.id}" class="recent-order-row">
+      <a href="orders/detail?id=${order.id}" class="recent-order-row">
         <span class="recent-order-id">#${order.id}</span>
         <span class="recent-order-date text-muted">${formatDate(order.createdAt)}</span>
         <span class="order-status" style="background:${status.color}">${status.label}</span>

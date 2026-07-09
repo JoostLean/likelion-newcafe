@@ -43,7 +43,7 @@ function renderRecentOrders() {
           : escapeHtml(firstItem.name);
 
       return `
-      <a href="../orders/detail.html?id=${order.id}" class="my-order-row">
+      <a href="../orders/detail?id=${order.id}" class="my-order-row">
         <div class="my-order-row-main">
           <span class="my-order-row-id">주문번호 ${order.id}</span>
           <span class="my-order-row-summary text-muted">${summary}</span>

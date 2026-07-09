@@ -54,7 +54,7 @@ function renderMenus() {
 
       return `
       <article class="menu-card card">
-        <a class="menu-card__thumb" href="detail.html?id=${m.id}">
+        <a class="menu-card__thumb" href="detail?id=${m.id}">
           <img src="${escapeHtml(m.image)}" alt="${escapeHtml(m.name)}"
                loading="lazy"
                onerror="this.src='https://placehold.co/400x300?text=No+Image'" />
@@ -66,7 +66,7 @@ function renderMenus() {
           <span class="menu-card__price">${formatPrice(m.price)}</span>
         </div>
         <div class="menu-card__actions">
-          <a class="btn btn-outline" href="edit.html?id=${m.id}">수정</a>
+          <a class="btn btn-outline" href="edit?id=${m.id}">수정</a>
           <button class="btn btn-danger" data-delete="${m.id}">삭제</button>
         </div>
       </article>`;

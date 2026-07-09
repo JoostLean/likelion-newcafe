@@ -11,7 +11,7 @@ function renderDetail() {
     root.innerHTML = `
       <div class="detail-missing card">
         <p>존재하지 않는 메뉴입니다.</p>
-        <a href="list.html" class="btn btn-primary" style="margin-top:16px">목록으로</a>
+        <a href="list" class="btn btn-primary" style="margin-top:16px">목록으로</a>
       </div>`;
     return;
   }
@@ -56,7 +56,7 @@ function renderDetail() {
         </div>
 
         <div class="detail__actions">
-          <a class="btn btn-primary" href="edit.html?id=${menu.id}">수정하기</a>
+          <a class="btn btn-primary" href="edit?id=${menu.id}">수정하기</a>
           <button class="btn btn-danger" id="delete-btn">삭제하기</button>
         </div>
       </div>
@@ -66,7 +66,7 @@ function renderDetail() {
     if (!confirm(`"${menu.name}" 메뉴를 삭제할까요?`)) return;
     MenuStore.remove(menu.id);
     showToast("메뉴를 삭제했습니다.");
-    setTimeout(() => (location.href = "list.html"), 600);
+    setTimeout(() => (location.href = "list"), 600);
   });
 }
 

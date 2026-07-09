@@ -65,7 +65,7 @@ function renderOrders() {
 
       return `
       <article class="order-row card">
-        <a href="detail.html?id=${order.id}" class="order-row__main">
+        <a href="detail?id=${order.id}" class="order-row__main">
           <span class="order-row__id">#${order.id}</span>
           <span class="order-row__date text-muted">${formatDate(order.createdAt)}</span>
           <span class="order-row__summary">${summary}</span>

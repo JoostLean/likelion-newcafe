@@ -69,7 +69,7 @@ function renderMenus(categoryId) {
     .map(
       (menu) => `
       <article class="menu-card card ${menu.soldOut ? "is-sold-out" : ""}" data-id="${menu.id}">
-        <a href="detail.html?id=${menu.id}" class="menu-card-link">
+        <a href="detail?id=${menu.id}" class="menu-card-link">
           <div class="menu-card-image" style="background-image:url('${menu.image}')">
             ${menu.popular ? `<span class="badge badge-popular">인기</span>` : ""}
             ${menu.soldOut ? `<span class="badge badge-soldout">품절</span>` : ""}

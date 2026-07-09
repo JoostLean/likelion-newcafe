@@ -10,7 +10,7 @@ function renderDetail() {
     root.innerHTML = `
       <div class="detail-missing card">
         <p>존재하지 않는 주문입니다.</p>
-        <a href="list.html" class="btn btn-primary" style="margin-top:16px">목록으로</a>
+        <a href="list" class="btn btn-primary" style="margin-top:16px">목록으로</a>
       </div>`;
     return;
   }

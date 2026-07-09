@@ -92,6 +92,6 @@ function handleCheckout() {
   showToast("주문이 완료되었습니다.");
 
   setTimeout(() => {
-    location.href = `../orders/detail.html?id=${order.id}`;
+    location.href = `../orders/detail?id=${order.id}`;
   }, 600);
 }

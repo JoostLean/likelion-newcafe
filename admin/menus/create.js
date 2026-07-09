@@ -84,6 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const created = MenuStore.add(data);
     showToast("새 메뉴를 등록했습니다.");
-    setTimeout(() => (location.href = `detail.html?id=${created.id}`), 600);
+    setTimeout(() => (location.href = `detail?id=${created.id}`), 600);
   });
 });

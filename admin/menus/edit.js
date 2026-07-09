@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!confirm(`"${menu.name}" 메뉴를 삭제할까요?`)) return;
     MenuStore.remove(editingId);
     showToast("메뉴를 삭제했습니다.");
-    setTimeout(() => (location.href = "list.html"), 600);
+    setTimeout(() => (location.href = "list"), 600);
   });
 
   // 저장
@@ -115,6 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     MenuStore.update(editingId, data);
     showToast("변경 사항을 저장했습니다.");
-    setTimeout(() => (location.href = `detail.html?id=${editingId}`), 600);
+    setTimeout(() => (location.href = `detail?id=${editingId}`), 600);
   });
 });

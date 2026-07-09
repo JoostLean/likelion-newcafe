@@ -20,7 +20,7 @@ function renderDetail() {
     container.innerHTML = `
       <div class="not-found">
         <p>주문을 찾을 수 없습니다.</p>
-        <a href="list.html" class="btn btn-outline">주문 내역으로</a>
+        <a href="list" class="btn btn-outline">주문 내역으로</a>
       </div>`;
     return;
   }
@@ -28,7 +28,7 @@ function renderDetail() {
   const status = ORDER_STATUS[order.status] || ORDER_STATUS.pending;
 
   container.innerHTML = `
-    <a href="list.html" class="back-link">← 주문 내역</a>
+    <a href="list" class="back-link">← 주문 내역</a>
 
     <div class="order-detail-card card">
       <div class="order-detail-head">

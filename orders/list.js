@@ -20,7 +20,7 @@ function renderOrders() {
     container.innerHTML = `
       <div class="empty-state">
         <p class="text-muted">아직 주문 내역이 없습니다.</p>
-        <a href="../menus/list.html" class="btn btn-primary">메뉴 보러가기</a>
+        <a href="../menus/list" class="btn btn-primary">메뉴 보러가기</a>
       </div>`;
     return;
   }
@@ -34,7 +34,7 @@ function renderOrders() {
         : escapeHtml(firstItem.name);
 
       return `
-      <a href="detail.html?id=${order.id}" class="order-card card">
+      <a href="detail?id=${order.id}" class="order-card card">
         <div class="order-card-header">
           <span class="order-id">주문번호 ${order.id}</span>
           <span class="order-status-badge" style="background:${status.color}">${status.label}</span>

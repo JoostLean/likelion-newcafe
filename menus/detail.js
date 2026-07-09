@@ -23,7 +23,7 @@ function renderDetail() {
     container.innerHTML = `
       <div class="not-found">
         <p>메뉴를 찾을 수 없습니다.</p>
-        <a href="list.html" class="btn btn-outline">메뉴 목록으로</a>
+        <a href="list" class="btn btn-outline">메뉴 목록으로</a>
       </div>`;
     return;
   }
@@ -31,7 +31,7 @@ function renderDetail() {
   const category = getCategory(menu.category);
 
   container.innerHTML = `
-    <a href="list.html" class="back-link">← 메뉴 목록</a>
+    <a href="list" class="back-link">← 메뉴 목록</a>
 
     <div class="menu-detail-layout">
       <div class="menu-detail-image" style="background-image:url('${menu.image}')">
