@@ -1,55 +1,55 @@
 /* ============================================
    전역 CSS 변수 + 리셋
-   테마: 라이트 + 따뜻한 브라운/크림 톤
+   테마: 미니멀 모던, 차가운 도시 톤 (화이트/블랙/그레이)
    ============================================ */
 
 :root {
-  /* ---- 브랜드 컬러 (브라운/크림) ---- */
-  --color-brown-900: #3a2a20;
-  --color-brown-800: #4e3629;
-  --color-brown-700: #6f4e37;
-  --color-brown-600: #8b6b4f;
-  --color-brown-500: #a67c52;
-  --color-brown-400: #c4a484;
-  --color-brown-300: #d9c2a6;
+  /* ---- 브랜드 컬러 (뉴트럴 그레이스케일) ---- */
+  --color-brown-900: #0a0a0b;
+  --color-brown-800: #18181b;
+  --color-brown-700: #27272a;
+  --color-brown-600: #3f3f46;
+  --color-brown-500: #52525b;
+  --color-brown-400: #a1a1aa;
+  --color-brown-300: #d4d4d8;
 
-  --color-cream-100: #fdfaf5;
-  --color-cream-200: #f7efe3;
-  --color-cream-300: #f0e4d3;
-  --color-cream-400: #e7d7c1;
+  --color-cream-100: #ffffff;
+  --color-cream-200: #f4f4f5;
+  --color-cream-300: #e4e4e7;
+  --color-cream-400: #d4d4d8;
 
   /* ---- 시맨틱 컬러 ---- */
-  --color-primary: var(--color-brown-700);
-  --color-primary-hover: var(--color-brown-800);
-  --color-accent: var(--color-brown-500);
+  --color-primary: var(--color-brown-800);
+  --color-primary-hover: var(--color-brown-900);
+  --color-accent: #334155;
 
   --color-bg: var(--color-cream-100);
   --color-bg-alt: var(--color-cream-200);
   --color-surface: #ffffff;
 
-  --color-text: #2c2118;
-  --color-text-muted: #7a6a5a;
-  --color-text-inverse: #fdfaf5;
+  --color-text: #0f1012;
+  --color-text-muted: #71717a;
+  --color-text-inverse: #ffffff;
 
-  --color-border: #e6dccd;
-  --color-success: #4c8055;
-  --color-warning: #c9922e;
-  --color-danger: #c0503f;
+  --color-border: #e4e4e7;
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-danger: #b91c1c;
 
   /* ---- Glass morphism ---- */
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-border: rgba(255, 255, 255, 0.65);
-  --glass-blur: 12px;
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(228, 228, 231, 0.8);
+  --glass-blur: 10px;
 
-  /* ---- 그림자 ---- */
-  --shadow-sm: 0 1px 3px rgba(78, 54, 41, 0.08);
-  --shadow-md: 0 4px 16px rgba(78, 54, 41, 0.12);
-  --shadow-lg: 0 12px 32px rgba(78, 54, 41, 0.16);
+  /* ---- 그림자 (차가운 뉴트럴 톤) ---- */
+  --shadow-sm: 0 1px 2px rgba(15, 16, 18, 0.05), 0 1px 1px rgba(15, 16, 18, 0.04);
+  --shadow-md: 0 6px 16px rgba(15, 16, 18, 0.08);
+  --shadow-lg: 0 16px 36px rgba(15, 16, 18, 0.12);
 
-  /* ---- 반경 ---- */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
+  /* ---- 반경 (절제된, 덜 둥근) ---- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --radius-full: 999px;
 
   /* ---- 간격 ---- */
@@ -60,20 +60,20 @@
   --space-xl: 40px;
 
   /* ---- 타이포 ---- */
-  --font-sans: "Pretendard", "Noto Sans KR", system-ui, -apple-system,
-    "Segoe UI", sans-serif;
+  --font-sans: "Inter", "Helvetica Neue", Arial, "Segoe UI", "Pretendard",
+    "Noto Sans KR", system-ui, sans-serif;
   --font-size-sm: 0.85rem;
   --font-size-base: 1rem;
-  --font-size-lg: 1.25rem;
-  --font-size-xl: 1.6rem;
-  --font-size-2xl: 2.2rem;
+  --font-size-lg: 1.15rem;
+  --font-size-xl: 1.45rem;
+  --font-size-2xl: 2rem;
 
   /* ---- 레이아웃 ---- */
   --max-width: 1120px;
   --header-height: 64px;
 
   /* ---- 트랜지션 ---- */
-  --transition: 0.2s ease;
+  --transition: 0.16s ease;
 }
 
 /* ============================================
@@ -97,14 +97,17 @@ body {
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
   line-height: 1.6;
+  letter-spacing: -0.011em;
   color: var(--color-text);
-  background:
-    radial-gradient(1200px 600px at 100% -10%, var(--color-cream-300), transparent),
-    radial-gradient(900px 500px at -10% 110%, var(--color-cream-400), transparent),
-    var(--color-bg);
-  background-attachment: fixed;
+  background: var(--color-bg);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
 }
 
 img,
@@ -157,9 +160,10 @@ ol {
 .glass {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
+  border-width: 0 0 1px;
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
 }
 
 .card {
@@ -174,11 +178,12 @@ ol {
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  padding: 10px 18px;
-  border-radius: var(--radius-full);
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
   font-weight: 600;
-  transition: background var(--transition), transform var(--transition),
-    box-shadow var(--transition);
+  font-size: var(--font-size-sm);
+  transition: background var(--transition), color var(--transition),
+    border-color var(--transition), transform var(--transition);
 }
 
 .btn:active {
@@ -196,12 +201,13 @@ ol {
 
 .btn-outline {
   background: transparent;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
 }
 
 .btn-outline:hover {
-  background: var(--color-bg-alt);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .btn-ghost {

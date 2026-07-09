@@ -214,9 +214,9 @@ function showToast(message, duration = 2000) {
   const toast = document.createElement("div");
   toast.textContent = message;
   toast.style.cssText =
-    "background:rgba(44,33,24,0.92);color:#fdfaf5;padding:12px 20px;" +
-    "border-radius:999px;font-size:0.9rem;font-weight:600;" +
-    "box-shadow:0 8px 24px rgba(0,0,0,0.2);opacity:0;transform:translateY(8px);" +
+    "background:var(--color-text);color:var(--color-text-inverse);padding:12px 20px;" +
+    "border-radius:var(--radius-full);font-size:0.9rem;font-weight:600;" +
+    "box-shadow:var(--shadow-lg);opacity:0;transform:translateY(8px);" +
     "transition:opacity .25s ease,transform .25s ease;";
   container.appendChild(toast);
 

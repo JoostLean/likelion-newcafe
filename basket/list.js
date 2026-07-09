@@ -52,7 +52,10 @@ function renderBasket() {
     <div class="basket-summary-row basket-summary-total">
       <span>총 금액</span>
       <span>${formatPrice(Cart.getTotal())}</span>
-    </div>`;
+    </div>
+    <button id="checkout-btn" class="btn btn-primary checkout-btn">주문하기</button>`;
+
+  $("#checkout-btn").addEventListener("click", handleCheckout);
 
   $$("[data-increase]", list).forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -77,4 +80,18 @@ function renderBasket() {
       showToast("장바구니에서 제거했습니다.");
     });
   });
+}
+
+/** 주문하기 처리: 주문 생성 → 장바구니 비우기 → 주문 상세로 이동 */
+function handleCheckout() {
+  const items = Cart.getDetailedItems();
+  if (items.length === 0) return;
+
+  const order = OrderStore.create(items);
+  Cart.clear();
+  showToast("주문이 완료되었습니다.");
+
+  setTimeout(() => {
+    location.href = `../orders/detail.html?id=${order.id}`;
+  }, 600);
 }

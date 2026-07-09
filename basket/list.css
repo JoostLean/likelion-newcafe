@@ -164,6 +164,13 @@
   font-weight: 700;
 }
 
+.checkout-btn {
+  width: 100%;
+  margin-top: var(--space-md);
+  padding: 14px;
+  font-size: var(--font-size-base);
+}
+
 .empty-state {
   text-align: center;
   padding: var(--space-xl) 0;
