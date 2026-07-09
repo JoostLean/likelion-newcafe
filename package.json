@@ -1,0 +1,24 @@
+{
+  "name": "likelion-newcafe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve -l 3155"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoostLean/likelion-newcafe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JoostLean/likelion-newcafe/issues"
+  },
+  "homepage": "https://github.com/JoostLean/likelion-newcafe#readme",
+  "dependencies": {
+    "serve": "^14.2.6"
+  }
+}
