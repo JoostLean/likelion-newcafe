@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마이페이지 - 카페</title>
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">☕ 카페</a>
+      <nav class="header-nav">
+        <a href="../my/index.html" class="mypage-link is-active">👤 마이페이지</a>
+        <a href="../basket/list.html" class="cart-link">
+          🛒 장바구니
+          <span id="cart-count" class="cart-badge">0</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">마이페이지</h1>
+
+    <div id="mypage-tabs" class="mypage-tabs" role="tablist">
+      <button class="mypage-tab active" data-tab="profile" role="tab" aria-selected="true">👤 프로필</button>
+      <button class="mypage-tab" data-tab="orders" role="tab" aria-selected="false">🧾 최근 주문</button>
+      <button class="mypage-tab" data-tab="basket" role="tab" aria-selected="false">🛒 장바구니</button>
+    </div>
+
+    <section id="tab-profile" class="tab-panel" role="tabpanel">
+      <section class="profile-card card">
+        <div class="profile-avatar">☕</div>
+        <div class="profile-info">
+          <p class="profile-name">게스트 님</p>
+          <p class="profile-desc text-muted">오늘도 좋은 하루 되세요!</p>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <div class="stat-card card">
+          <span class="stat-card-label">총 주문</span>
+          <span class="stat-card-value" id="stat-order-count">0</span>
+        </div>
+        <div class="stat-card card">
+          <span class="stat-card-label">누적 결제금액</span>
+          <span class="stat-card-value" id="stat-total-spent">0원</span>
+        </div>
+        <div class="stat-card card">
+          <span class="stat-card-label">장바구니</span>
+          <span class="stat-card-value" id="stat-cart-count">0</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">바로가기</h2>
+        <div class="quick-links">
+          <a href="../orders/list.html" class="quick-link card">
+            <span class="quick-link-icon">🧾</span>
+            <span class="quick-link-label">주문 내역</span>
+          </a>
+          <a href="../basket/list.html" class="quick-link card">
+            <span class="quick-link-icon">🛒</span>
+            <span class="quick-link-label">장바구니</span>
+          </a>
+          <a href="../menus/list.html" class="quick-link card">
+            <span class="quick-link-icon">📋</span>
+            <span class="quick-link-label">메뉴 보기</span>
+          </a>
+        </div>
+      </section>
+    </section>
+
+    <section id="tab-orders" class="tab-panel" hidden role="tabpanel">
+      <div class="section-head">
+        <h2 class="section-title">최근 주문</h2>
+        <a href="../orders/list.html" class="section-more">전체보기 &rarr;</a>
+      </div>
+      <div id="recent-order-list" class="recent-order-list"></div>
+    </section>
+
+    <section id="tab-basket" class="tab-panel" hidden role="tabpanel">
+      <div class="section-head">
+        <h2 class="section-title">장바구니 요약</h2>
+        <a href="../basket/list.html" class="section-more">장바구니로 이동 &rarr;</a>
+      </div>
+      <div id="basket-summary-list" class="recent-order-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-logo">☕ 카페</p>
+      <p class="footer-info">서울시 성동구 카페거리 12 · 매일 08:00 - 22:00</p>
+      <p class="footer-info">문의 02-1234-5678</p>
+      <p class="footer-copyright">&copy; 2026 카페. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
