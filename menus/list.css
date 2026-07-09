@@ -25,6 +25,17 @@
 .header-nav {
   display: flex;
   align-items: center;
+  gap: var(--space-lg);
+}
+
+.mypage-link {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.mypage-link:hover,
+.mypage-link.is-active {
+  color: var(--color-primary);
 }
 
 .cart-link {
