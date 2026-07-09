@@ -1,3 +1,9 @@
 {
-  "cleanUrls": false
+  "cleanUrls": [
+    "!/menus/detail.html",
+    "!/orders/detail.html",
+    "!/admin/menus/detail.html",
+    "!/admin/menus/edit.html",
+    "!/admin/orders/detail.html"
+  ]
 }
