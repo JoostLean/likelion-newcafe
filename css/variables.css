@@ -59,9 +59,9 @@
   --space-lg: 24px;
   --space-xl: 40px;
 
-  /* ---- 타이포 ---- */
-  --font-sans: "Inter", "Helvetica Neue", Arial, "Segoe UI", "Pretendard",
-    "Noto Sans KR", system-ui, sans-serif;
+  /* ---- 타이포 (부드러운 라운드 산세리프) ---- */
+  --font-sans: "Pretendard", "Noto Sans KR", "Segoe UI", system-ui,
+    sans-serif;
   --font-size-sm: 0.85rem;
   --font-size-base: 1rem;
   --font-size-lg: 1.15rem;
@@ -97,9 +97,16 @@ body {
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
   line-height: 1.6;
-  letter-spacing: -0.011em;
+  letter-spacing: -0.005em;
   color: var(--color-text);
-  background: var(--color-bg);
+  background-color: var(--color-bg);
+  background-image:
+    linear-gradient(rgba(15, 16, 18, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 16, 18, 0.05) 1px, transparent 1px),
+    radial-gradient(1200px 600px at 100% -10%, #eef1f4 0%, transparent 60%),
+    radial-gradient(900px 520px at -10% 110%, #e9ebef 0%, transparent 60%);
+  background-size: 40px 40px, 40px 40px, auto, auto;
+  background-attachment: fixed;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
@@ -107,7 +114,7 @@ body {
 h1,
 h2,
 h3 {
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 img,
@@ -238,4 +245,66 @@ ol {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* ---- 로고 아이콘 (김이 나는 커피잔) ---- */
+.logo-icon {
+  position: relative;
+  display: inline-block;
+  animation: logo-bob 2.6s ease-in-out infinite;
+}
+
+.logo-icon::before,
+.logo-icon::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  width: 3px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-text-muted);
+  opacity: 0;
+  animation: logo-steam 2.4s ease-in infinite;
+}
+
+.logo-icon::before {
+  left: 38%;
+  animation-delay: 0.2s;
+}
+
+.logo-icon::after {
+  left: 62%;
+  animation-delay: 1.3s;
+}
+
+@keyframes logo-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(-6deg);
+  }
+}
+
+@keyframes logo-steam {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scaleY(0.6);
+  }
+  35% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-12px) scaleY(1.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-icon,
+  .logo-icon::before,
+  .logo-icon::after {
+    animation: none;
+  }
 }

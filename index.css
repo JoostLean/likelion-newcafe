@@ -28,12 +28,14 @@
   gap: var(--space-lg);
 }
 
-.my-link {
+.my-link,
+.admin-link {
   font-weight: 600;
   color: var(--color-text);
 }
 
-.my-link:hover {
+.my-link:hover,
+.admin-link:hover {
   color: var(--color-primary);
 }
 

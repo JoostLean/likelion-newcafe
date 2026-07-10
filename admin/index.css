@@ -59,6 +59,17 @@
   color: var(--color-text-inverse);
 }
 
+.admin-header__link--exit {
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.admin-header__link--exit:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-bg-alt);
+}
+
 /* ---- 메인 ---- */
 .admin-main {
   padding-block: var(--space-xl);
@@ -162,6 +173,15 @@
 
 @media (max-width: 640px) {
   .admin-header__page {
+    display: none;
+  }
+  .admin-header__nav {
+    gap: 2px;
+  }
+  .admin-header__link {
+    padding: 8px 10px;
+  }
+  .admin-header__link-label {
     display: none;
   }
   .recent-order-row {
