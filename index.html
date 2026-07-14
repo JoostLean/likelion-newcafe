@@ -16,7 +16,6 @@
       <nav class="header-nav">
         <button type="button" class="theme-toggle" aria-label="다크 모드로 전환">🌙</button>
         <a href="my/index.html" class="my-link">👤<span class="nav-label"> 마이페이지</span></a>
-        <button type="button" id="admin-link" class="admin-link">🔑<span class="nav-label"> 관리자</span></button>
         <a href="basket/list.html" class="cart-link">
           🛒<span class="nav-label"> 장바구니</span>
           <span id="cart-count" class="cart-badge">0</span>
@@ -63,27 +62,6 @@
       <p class="text-muted">☕ H-cafe · 오늘도 좋은 하루 되세요</p>
     </div>
   </footer>
-
-  <div id="admin-auth-modal" class="modal-overlay" hidden>
-    <div class="modal card">
-      <h2 class="modal-title">관리자 인증</h2>
-      <p class="modal-desc text-muted">비밀번호를 입력해주세요.</p>
-      <form id="admin-auth-form">
-        <input
-          type="password"
-          id="admin-password"
-          class="modal-input"
-          placeholder="••••"
-          inputmode="numeric"
-          autocomplete="off"
-        />
-        <div class="modal-actions">
-          <button type="button" id="admin-auth-cancel" class="btn btn-ghost">취소</button>
-          <button type="submit" class="btn btn-primary">확인</button>
-        </div>
-      </form>
-    </div>
-  </div>
 
   <script src="js/data.js"></script>
   <script src="js/utils.js"></script>

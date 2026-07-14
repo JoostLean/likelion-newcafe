@@ -2,14 +2,11 @@
    메인 페이지 로직
    ============================================ */
 
-const ADMIN_PASSWORD = "0000";
-
 document.addEventListener("DOMContentLoaded", () => {
   MenuStore.init();
   Cart.subscribe(updateCartBadge);
   renderCategories();
   renderPopularMenus();
-  setupAdminAuth();
   renderRecentWidget($("#recent-section"), $("#recent-scroll"), {
     hrefPrefix: "menus/",
   });
@@ -67,54 +64,5 @@ function renderPopularMenus() {
       showToast("장바구니에 담았습니다.");
       celebrateAddToCart(btn);
     });
-  });
-}
-
-/** 관리자 진입 버튼 → 비밀번호 확인 모달 */
-function setupAdminAuth() {
-  const trigger = $("#admin-link");
-  const modal = $("#admin-auth-modal");
-  const form = $("#admin-auth-form");
-  const input = $("#admin-password");
-  const cancelBtn = $("#admin-auth-cancel");
-
-  if (!trigger || !modal) return;
-
-  const openModal = () => {
-    modal.hidden = false;
-    input.value = "";
-    input.classList.remove("is-invalid");
-    input.focus();
-  };
-
-  const closeModal = () => {
-    modal.hidden = true;
-  };
-
-  trigger.addEventListener("click", openModal);
-  cancelBtn.addEventListener("click", closeModal);
-
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.hidden) closeModal();
-  });
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    if (input.value === ADMIN_PASSWORD) {
-      location.href = "admin/index.html";
-      return;
-    }
-
-    input.classList.remove("is-invalid");
-    void input.offsetWidth;
-    input.classList.add("is-invalid");
-    input.value = "";
-    input.focus();
-    showToast("비밀번호가 올바르지 않습니다.");
   });
 }
