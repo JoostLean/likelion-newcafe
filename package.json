@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "serve -l 3155"
+    "start": "serve -c serve.json -l 3155"
   },
   "repository": {
     "type": "git",
