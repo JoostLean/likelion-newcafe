@@ -43,6 +43,169 @@ function getQueryParam(key) {
   return new URLSearchParams(location.search).get(key);
 }
 
+/* ---------- 다크 모드(Theme) ---------- */
+
+const THEME_STORAGE_KEY = "cafe.theme";
+
+const ThemeStore = {
+  get() {
+    return localStorage.getItem(THEME_STORAGE_KEY) || "light";
+  },
+
+  set(theme) {
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+    document.documentElement.setAttribute("data-theme", theme);
+  },
+
+  toggle() {
+    this.set(this.get() === "dark" ? "light" : "dark");
+  },
+};
+
+/** 페이지 내 모든 .theme-toggle 버튼을 현재 테마에 맞게 초기화하고 클릭 바인딩 */
+function initThemeToggle() {
+  document.documentElement.setAttribute("data-theme", ThemeStore.get());
+
+  const updateIcon = (btn, theme) => {
+    btn.textContent = theme === "dark" ? "☀️" : "🌙";
+    btn.setAttribute(
+      "aria-label",
+      theme === "dark" ? "라이트 모드로 전환" : "다크 모드로 전환"
+    );
+  };
+
+  $$(".theme-toggle").forEach((btn) => {
+    updateIcon(btn, ThemeStore.get());
+    btn.addEventListener("click", () => {
+      ThemeStore.toggle();
+      $$(".theme-toggle").forEach((b) => updateIcon(b, ThemeStore.get()));
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", initThemeToggle);
+
+/* ---------- 최근 본 메뉴(Recent) ---------- */
+
+const RECENT_STORAGE_KEY = "cafe.recent";
+const RECENT_MAX = 8;
+
+const RecentStore = {
+  /** 최근 본 메뉴 id 배열 (최신순) */
+  getIds() {
+    try {
+      return JSON.parse(localStorage.getItem(RECENT_STORAGE_KEY)) || [];
+    } catch {
+      return [];
+    }
+  },
+
+  /** 메뉴를 "최근 본" 맨 앞에 기록 (중복 제거, 최대 RECENT_MAX개 유지) */
+  add(menuId) {
+    menuId = Number(menuId);
+    let ids = this.getIds().filter((id) => id !== menuId);
+    ids.unshift(menuId);
+    localStorage.setItem(
+      RECENT_STORAGE_KEY,
+      JSON.stringify(ids.slice(0, RECENT_MAX))
+    );
+  },
+
+  /** 최근 본 메뉴 객체 배열 (삭제된 메뉴는 자동 제외, excludeId는 목록에서 제외) */
+  getMenus(excludeId) {
+    return this.getIds()
+      .filter((id) => id !== Number(excludeId))
+      .map((id) => MenuStore.getById(id))
+      .filter(Boolean);
+  },
+};
+
+/**
+ * "최근 본 메뉴" 가로 스크롤 위젯 렌더링
+ * sectionEl: 위젯 전체를 감싸는 요소 (메뉴가 없으면 hidden 처리)
+ * scrollEl: 카드가 채워질 스크롤 컨테이너
+ * options.hrefPrefix: 상세 페이지 링크 접두사 (menus/ 폴더 기준 상대경로)
+ * options.excludeId: 목록에서 제외할 메뉴 id (상세 페이지 자기 자신)
+ */
+function renderRecentWidget(sectionEl, scrollEl, options = {}) {
+  if (!sectionEl || !scrollEl) return;
+  const { hrefPrefix = "", excludeId } = options;
+  const menus = RecentStore.getMenus(excludeId);
+
+  if (menus.length === 0) {
+    sectionEl.hidden = true;
+    return;
+  }
+
+  sectionEl.hidden = false;
+  scrollEl.innerHTML = menus
+    .map(
+      (menu) => `
+      <a href="${hrefPrefix}detail?id=${menu.id}" class="recent-card">
+        <div class="recent-card-image" style="background-image:url('${menu.image}')"></div>
+        <p class="recent-card-name">${escapeHtml(menu.name)}</p>
+        <p class="recent-card-price">${formatPrice(menu.price)}</p>
+      </a>`
+    )
+    .join("");
+}
+
+/* ---------- 장바구니 담기 애니메이션 ---------- */
+
+/** 담기 버튼에서 헤더 장바구니 아이콘으로 아이콘이 날아가는 연출 */
+function flyToCart(originEl) {
+  const target = $(".cart-link");
+  if (!originEl || !target) return;
+
+  const from = originEl.getBoundingClientRect();
+  const to = target.getBoundingClientRect();
+
+  const flyer = document.createElement("div");
+  flyer.textContent = "☕";
+  flyer.style.cssText = [
+    "position:fixed",
+    `left:${from.left + from.width / 2 - 12}px`,
+    `top:${from.top + from.height / 2 - 12}px`,
+    "width:24px",
+    "height:24px",
+    "font-size:20px",
+    "line-height:24px",
+    "text-align:center",
+    "z-index:9999",
+    "pointer-events:none",
+    "transition:transform .55s cubic-bezier(.3,-0.4,.7,1.4), opacity .55s ease .15s",
+    "will-change:transform,opacity",
+  ].join(";");
+  document.body.appendChild(flyer);
+
+  const dx = to.left + to.width / 2 - (from.left + from.width / 2);
+  const dy = to.top + to.height / 2 - (from.top + from.height / 2);
+
+  requestAnimationFrame(() => {
+    flyer.style.transform = `translate(${dx}px, ${dy}px) scale(0.3)`;
+    flyer.style.opacity = "0.2";
+  });
+
+  setTimeout(() => {
+    flyer.remove();
+    target.classList.add("cart-pop");
+    setTimeout(() => target.classList.remove("cart-pop"), 350);
+  }, 550);
+}
+
+/** 담기 버튼 클릭 시 바운스 + 장바구니로 날아가는 연출을 함께 재생 */
+function celebrateAddToCart(btn) {
+  if (!btn) return;
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  btn.classList.add("btn-bounce");
+  setTimeout(() => btn.classList.remove("btn-bounce"), 350);
+
+  if (!reduceMotion) flyToCart(btn);
+}
+
 /* ---------- 장바구니(Cart) ---------- */
 
 const CART_STORAGE_KEY = "cafe.cart";
@@ -196,6 +359,41 @@ const OrderStore = {
     return order;
   },
 };
+
+/** 진행 순서가 있는 주문 상태 (취소됨은 별도 처리) */
+const ORDER_TIMELINE_STEPS = ["pending", "making", "done"];
+
+/** 주문 상태 진행 타임라인 HTML 생성 (부드럽게 채워지는 진행바 + 단계 표시) */
+function renderStatusTimeline(status) {
+  if (status === "canceled") {
+    return `
+      <div class="status-timeline status-timeline--canceled">
+        <span class="status-timeline-canceled-dot"></span>
+        <span>이 주문은 취소되었습니다.</span>
+      </div>`;
+  }
+
+  const stepIndex = Math.max(ORDER_TIMELINE_STEPS.indexOf(status), 0);
+  const fillPercent = (stepIndex / (ORDER_TIMELINE_STEPS.length - 1)) * 100;
+
+  const steps = ORDER_TIMELINE_STEPS.map((key, i) => {
+    const info = ORDER_STATUS[key];
+    const state = i < stepIndex ? "is-done" : i === stepIndex ? "is-active" : "";
+    return `
+      <div class="status-timeline-step ${state}">
+        <span class="status-timeline-dot"></span>
+        <span class="status-timeline-label">${info.label}</span>
+      </div>`;
+  }).join("");
+
+  return `
+    <div class="status-timeline">
+      <div class="status-timeline-track">
+        <div class="status-timeline-fill" style="width:${fillPercent}%"></div>
+      </div>
+      <div class="status-timeline-steps">${steps}</div>
+    </div>`;
+}
 
 /* ---------- 토스트 알림 ---------- */
 

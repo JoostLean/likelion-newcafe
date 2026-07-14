@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <script>(function(){try{var t=localStorage.getItem("cafe.theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>H-cafe</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
@@ -13,10 +14,11 @@
     <div class="container header-inner">
       <a href="index.html" class="logo"><span class="logo-icon">☕</span> H-cafe</a>
       <nav class="header-nav">
-        <a href="my/index.html" class="my-link">마이페이지</a>
-        <button type="button" id="admin-link" class="admin-link">관리자</button>
+        <button type="button" class="theme-toggle" aria-label="다크 모드로 전환">🌙</button>
+        <a href="my/index.html" class="my-link">👤<span class="nav-label"> 마이페이지</span></a>
+        <button type="button" id="admin-link" class="admin-link">🔑<span class="nav-label"> 관리자</span></button>
         <a href="basket/list.html" class="cart-link">
-          🛒 장바구니
+          🛒<span class="nav-label"> 장바구니</span>
           <span id="cart-count" class="cart-badge">0</span>
         </a>
       </nav>
@@ -31,6 +33,13 @@
         <p class="hero-desc">직접 로스팅한 원두와 정성스러운 디저트를 만나보세요.</p>
         <a href="menus/list.html" class="btn btn-primary hero-cta">메뉴 보러가기</a>
       </div>
+    </section>
+
+    <section class="container section" id="recent-section" hidden>
+      <div class="section-head">
+        <h2 class="section-title">최근 본 메뉴</h2>
+      </div>
+      <div id="recent-scroll" class="recent-scroll"></div>
     </section>
 
     <section class="container section">

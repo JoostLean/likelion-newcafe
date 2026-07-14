@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <script>(function(){try{var t=localStorage.getItem("cafe.theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>주문 내역 - H-cafe</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
@@ -13,6 +14,7 @@
     <div class="container header-inner">
       <a href="../index" class="logo"><span class="logo-icon">☕</span> H-cafe</a>
       <nav class="header-nav">
+        <button type="button" class="theme-toggle" aria-label="다크 모드로 전환">🌙</button>
         <a href="../basket/list" class="cart-link">
           🛒 장바구니
           <span id="cart-count" class="cart-badge">0</span>

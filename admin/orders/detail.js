@@ -27,6 +27,8 @@ function renderDetail() {
         <span class="order-status" style="background:${status.color}">${status.label}</span>
       </div>
 
+      ${renderStatusTimeline(order.status)}
+
       <ul class="order-detail__items">
         ${order.items
           .map(

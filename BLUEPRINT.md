@@ -84,7 +84,7 @@ cafe-app/
 
 ## 🎨 디자인
 
-- **테마**: 라이트 + 따뜻한 브라운/크림 톤
+- **테마**: 라이트/다크 모드 지원 + 따뜻한 브라운/크림 톤
 - **분위기**: 미니멀 + 모던
 - **카드 스타일**: Glass morphism
 - **레이아웃**: 반응형 (모바일/데스크톱)
@@ -168,3 +168,12 @@ cafe-app/
 - [x] `admin/orders/detail.html` — 주문 상세
 - [x] `admin/orders/detail.css`
 - [x] `admin/orders/detail.js`
+
+### 9단계: UX 고도화 기능 (전 페이지 공통)
+
+- [x] **다크모드 토글** — 모든 페이지 헤더에 🌙/☀️ 버튼, `localStorage("cafe.theme")`로 유지, `css/variables.css`의 `:root[data-theme="dark"]`에 다크 색상 토큰 정의 (`js/utils.js`의 `ThemeStore`)
+- [x] **메뉴 검색 자동완성** — `menus/list.html` 검색창에 입력 시 이름/카테고리 매칭 드롭다운 표시, 클릭 시 메뉴 상세로 이동
+- [x] **최근 본 메뉴 위젯** — 메뉴 상세 조회 시 `localStorage("cafe.recent")`에 최대 8개 기록 (`js/utils.js`의 `RecentStore`), 홈 화면과 메뉴 목록 페이지에 가로 스크롤 위젯으로 표시
+- [x] **장바구니 담기 애니메이션** — "담기" 버튼 클릭 시 버튼 바운스 + 아이콘이 헤더 장바구니로 날아가는 연출 (`js/utils.js`의 `flyToCart`/`celebrateAddToCart`), `prefers-reduced-motion` 대응
+- [x] **주문 상태 타임라인** — 주문 상세(고객/관리자 공통)에서 접수 대기 → 제조 중 → 완료 진행 상태를 부드럽게 채워지는 진행바로 시각화 (`js/utils.js`의 `renderStatusTimeline`), 취소된 주문은 별도 안내 배너로 표시
+  - ⚠️ 원래 요청은 "접수→준비중→배송중→완료"였으나, 이 앱은 포장/픽업 카페 주문 모델이라 배송(배송중) 단계가 없어 기존 3단계 주문 상태(`pending`/`making`/`done`, `ORDER_STATUS`)를 그대로 사용해 타임라인을 구성함

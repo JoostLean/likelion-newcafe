@@ -1,1 +1,4 @@
 node_modules/
+.mcp.json
+.agents/
+skills-lock.json

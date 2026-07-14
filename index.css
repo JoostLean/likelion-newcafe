@@ -20,6 +20,7 @@
   font-size: var(--font-size-lg);
   font-weight: 700;
   color: var(--color-primary);
+  white-space: nowrap;
 }
 
 .header-nav {
@@ -32,6 +33,7 @@
 .admin-link {
   font-weight: 600;
   color: var(--color-text);
+  white-space: nowrap;
 }
 
 .my-link:hover,
@@ -46,6 +48,7 @@
   gap: var(--space-xs);
   font-weight: 600;
   color: var(--color-text);
+  white-space: nowrap;
 }
 
 .cart-badge {
@@ -60,6 +63,15 @@
   color: #fff;
   font-size: 0.75rem;
   font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .header-nav {
+    gap: var(--space-sm);
+  }
+  .nav-label {
+    display: none;
+  }
 }
 
 /* ---- 히어로 ---- */
@@ -244,7 +256,7 @@
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgba(15, 16, 18, 0.45);
+  background: rgba(36, 26, 18, 0.45);
   padding: var(--space-md);
 }
 
@@ -283,7 +295,7 @@
 .modal-input:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(51, 65, 85, 0.15);
+  box-shadow: 0 0 0 3px rgba(173, 138, 77, 0.15);
 }
 
 .modal-input.is-invalid {

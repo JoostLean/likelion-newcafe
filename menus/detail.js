@@ -28,6 +28,8 @@ function renderDetail() {
     return;
   }
 
+  RecentStore.add(menu.id);
+
   const category = getCategory(menu.category);
 
   container.innerHTML = `
@@ -97,6 +99,7 @@ function bindQtyControls(menu) {
   $("#add-to-cart").addEventListener("click", () => {
     Cart.add(menu.id, currentQty);
     showToast(`${menu.name} ${currentQty}개를 담았습니다.`);
+    celebrateAddToCart($("#add-to-cart"));
     currentQty = 1;
     updateTotal();
   });

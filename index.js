@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCategories();
   renderPopularMenus();
   setupAdminAuth();
+  renderRecentWidget($("#recent-section"), $("#recent-scroll"), {
+    hrefPrefix: "menus/",
+  });
 });
 
 function updateCartBadge(count) {
@@ -62,6 +65,7 @@ function renderPopularMenus() {
       e.preventDefault();
       Cart.add(btn.dataset.add);
       showToast("장바구니에 담았습니다.");
+      celebrateAddToCart(btn);
     });
   });
 }

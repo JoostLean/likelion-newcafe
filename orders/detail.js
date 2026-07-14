@@ -39,6 +39,8 @@ function renderDetail() {
         <span class="order-status-badge" style="background:${status.color}">${status.label}</span>
       </div>
 
+      ${renderStatusTimeline(order.status)}
+
       <ul class="order-item-list">
         ${order.items
           .map(
