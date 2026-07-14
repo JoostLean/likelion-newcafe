@@ -177,3 +177,5 @@ cafe-app/
 - [x] **장바구니 담기 애니메이션** — "담기" 버튼 클릭 시 버튼 바운스 + 아이콘이 헤더 장바구니로 날아가는 연출 (`js/utils.js`의 `flyToCart`/`celebrateAddToCart`), `prefers-reduced-motion` 대응
 - [x] **주문 상태 타임라인** — 주문 상세(고객/관리자 공통)에서 접수 대기 → 제조 중 → 완료 진행 상태를 부드럽게 채워지는 진행바로 시각화 (`js/utils.js`의 `renderStatusTimeline`), 취소된 주문은 별도 안내 배너로 표시
   - ⚠️ 원래 요청은 "접수→준비중→배송중→완료"였으나, 이 앱은 포장/픽업 카페 주문 모델이라 배송(배송중) 단계가 없어 기존 3단계 주문 상태(`pending`/`making`/`done`, `ORDER_STATUS`)를 그대로 사용해 타임라인을 구성함
+- [x] **결제 수단 선택** — 장바구니 "주문하기" 클릭 시 바로 주문을 생성하지 않고 결제 수단 선택 모달(`basket/list.html`의 `#payment-modal`, `basket/list.js`)을 먼저 표시. 신용카드/토스페이/카카오페이 3종 (`js/utils.js`의 `PAYMENT_METHODS`), 신용카드는 카드번호/유효기간/CVC 입력폼으로 전환, 토스페이·카카오페이는 1.5초 로딩 연출 후 결제 완료 처리. 완료된 주문은 `paymentMethod` 필드를 저장하고(`OrderStore.create`) 고객 주문 상세("OO(으)로 결제 완료" 문구, `orders/detail.js`)와 관리자 주문 목록/상세(`admin/orders/list.js`, `admin/orders/detail.js`)에도 결제 수단을 표시
+  - ⚠️ 실제 PG(결제대행사) 연동이 아닌 UI/UX 시뮬레이션(mock)으로, 카드 입력값 검증과 토스페이/카카오페이 결제 처리 모두 외부 통신 없이 화면 전환/로딩 연출만으로 구현됨 (관련 코드에 주석으로 명시)

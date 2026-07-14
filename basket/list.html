@@ -31,6 +31,76 @@
     <div id="basket-summary" class="basket-summary card"></div>
   </main>
 
+  <!--
+    결제 수단 선택 모달
+    ⚠️ 실제 PG(결제대행사) 연동이 아닌 UI/UX 시뮬레이션(mock)입니다.
+  -->
+  <div id="payment-modal" class="modal-overlay" hidden>
+    <div class="modal card">
+      <button type="button" id="payment-modal-close" class="modal-close" aria-label="닫기">✕</button>
+
+      <div class="payment-step" data-step="select" id="payment-step-select">
+        <h2 class="modal-title">결제 수단 선택</h2>
+        <p class="modal-desc text-muted">
+          결제 금액 <strong id="payment-total"></strong>을 어떤 수단으로 결제할까요?
+        </p>
+        <div class="payment-method-grid" id="payment-method-grid"></div>
+      </div>
+
+      <div class="payment-step" data-step="card" id="payment-step-card" hidden>
+        <button type="button" id="payment-card-back" class="payment-back-link">← 결제 수단 선택으로</button>
+        <h2 class="modal-title">신용카드 정보 입력</h2>
+        <p class="modal-desc text-muted">실제 결제가 이루어지지 않는 데모 화면입니다.</p>
+        <form id="payment-card-form" class="payment-card-form">
+          <label class="payment-field">
+            <span class="payment-field-label">카드번호</span>
+            <input
+              type="text"
+              id="card-number"
+              inputmode="numeric"
+              maxlength="19"
+              placeholder="0000 0000 0000 0000"
+              autocomplete="off"
+              required
+            />
+          </label>
+          <div class="payment-field-row">
+            <label class="payment-field">
+              <span class="payment-field-label">유효기간</span>
+              <input
+                type="text"
+                id="card-expiry"
+                inputmode="numeric"
+                maxlength="5"
+                placeholder="MM/YY"
+                autocomplete="off"
+                required
+              />
+            </label>
+            <label class="payment-field">
+              <span class="payment-field-label">CVC</span>
+              <input
+                type="text"
+                id="card-cvc"
+                inputmode="numeric"
+                maxlength="3"
+                placeholder="000"
+                autocomplete="off"
+                required
+              />
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary payment-submit-btn">결제하기</button>
+        </form>
+      </div>
+
+      <div class="payment-step payment-step--processing" data-step="processing" id="payment-step-processing" hidden>
+        <div class="payment-spinner"></div>
+        <p class="payment-processing-text" id="payment-processing-text">결제 중...</p>
+      </div>
+    </div>
+  </div>
+
   <script src="../js/data.js"></script>
   <script src="../js/utils.js"></script>
   <script src="list.js"></script>

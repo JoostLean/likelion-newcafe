@@ -16,6 +16,7 @@ function renderDetail() {
   }
 
   const status = ORDER_STATUS[order.status] || ORDER_STATUS.pending;
+  const payment = getPaymentMethodInfo(order);
 
   root.innerHTML = `
     <div class="order-detail card">
@@ -23,6 +24,7 @@ function renderDetail() {
         <div>
           <h1 class="order-detail__id">주문 #${order.id}</h1>
           <p class="order-detail__date text-muted">${formatDate(order.createdAt)}</p>
+          <p class="order-detail__payment">${payment.icon} ${escapeHtml(payment.label)}</p>
         </div>
         <span class="order-status" style="background:${status.color}">${status.label}</span>
       </div>

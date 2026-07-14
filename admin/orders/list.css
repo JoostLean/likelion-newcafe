@@ -181,6 +181,12 @@
   white-space: nowrap;
 }
 
+.order-row__payment {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 .order-row__actions {
   display: flex;
   gap: var(--space-sm);

@@ -85,6 +85,13 @@
   margin-top: var(--space-xs);
 }
 
+.order-detail-payment {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: var(--space-xs);
+}
+
 .order-status-badge {
   display: inline-flex;
   align-items: center;

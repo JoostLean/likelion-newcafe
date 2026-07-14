@@ -55,6 +55,7 @@ function renderOrders() {
   list.innerHTML = orders
     .map((order) => {
       const status = ORDER_STATUS[order.status] || ORDER_STATUS.pending;
+      const payment = getPaymentMethodInfo(order);
       const [firstItem, ...rest] = order.items;
       const summary =
         rest.length > 0
@@ -72,6 +73,7 @@ function renderOrders() {
           <span class="order-row__total">${formatPrice(order.total)}</span>
         </a>
         <div class="order-row__side">
+          <span class="order-row__payment text-muted">${payment.icon} ${escapeHtml(payment.label)}</span>
           <span class="order-status" style="background:${status.color}">${status.label}</span>
           <div class="order-row__actions">
             ${next ? `<button class="btn btn-outline" data-advance="${order.id}">${ORDER_STATUS[next].label}로 변경</button>` : ""}

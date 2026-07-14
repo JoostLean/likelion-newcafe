@@ -395,6 +395,25 @@ function renderStatusTimeline(status) {
     </div>`;
 }
 
+/* ---------- 결제 수단(Payment) ---------- */
+
+/**
+ * 결제 수단 정의
+ * ⚠️ 실제 PG(결제대행사) 연동이 아닌 UI/UX 시뮬레이션용 mock 데이터입니다.
+ *    카드 입력폼 검증, 토스페이/카카오페이 결제 처리 모두 실제 외부 연동 없이
+ *    화면 전환/로딩 연출만으로 결제 흐름을 흉내냅니다.
+ */
+const PAYMENT_METHODS = {
+  card: { label: "신용카드", icon: "💳" },
+  tosspay: { label: "토스페이", icon: "🔷" },
+  kakaopay: { label: "카카오페이", icon: "💛" },
+};
+
+/** 주문의 결제 수단 정보 반환 (결제 수단 필드가 없는 이전 주문은 기본값 처리) */
+function getPaymentMethodInfo(order) {
+  return PAYMENT_METHODS[order.paymentMethod] || { label: "정보 없음", icon: "❔" };
+}
+
 /* ---------- 토스트 알림 ---------- */
 
 /** 화면 하단에 잠깐 뜨는 토스트 메시지 */

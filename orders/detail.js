@@ -26,6 +26,7 @@ function renderDetail() {
   }
 
   const status = ORDER_STATUS[order.status] || ORDER_STATUS.pending;
+  const payment = getPaymentMethodInfo(order);
 
   container.innerHTML = `
     <a href="list" class="back-link">← 주문 내역</a>
@@ -35,6 +36,7 @@ function renderDetail() {
         <div>
           <h1 class="order-detail-id">주문번호 ${order.id}</h1>
           <p class="order-detail-date text-muted">${formatDate(order.createdAt)}</p>
+          <p class="order-detail-payment">${payment.icon} ${escapeHtml(payment.label)}(으)로 결제 완료</p>
         </div>
         <span class="order-status-badge" style="background:${status.color}">${status.label}</span>
       </div>
