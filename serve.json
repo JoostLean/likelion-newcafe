@@ -1,6 +1,11 @@
 {
   "cleanUrls": false,
   "directoryListing": false,
+cd /c/workspace/likelion-Hcafe
+cat > serve.json << 'EOF'
+{
+  "cleanUrls": false,
+  "directoryListing": false,
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
     { "source": "/index", "destination": "/index.html" },
